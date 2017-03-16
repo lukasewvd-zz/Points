@@ -83,8 +83,8 @@ class GameManager {
         char selection = '0';
         
 	    while (true) {
-	        System.out.println("\n\n\t\t***Points - Menu***\n");
-	        System.out.println("Current round: #" + roundNumber);
+	        System.out.println("\n\n********** Points - Menu **********\n");
+	        System.out.println("ROUND: #" + roundNumber);
 			System.out.println("1. Show matches for current round");
 			System.out.println("2. Register result for a match");
 			System.out.println("3. Print results for all registerd matches");
@@ -92,7 +92,7 @@ class GameManager {
 			System.out.println("5. Next round -->");
 			System.out.println("q. Exit");
 			
-	        System.out.println("\nChoose a number between 1-5: ");
+	        System.out.print("\nChoose a number between 1-5: ");
 	        selection = in.next().charAt(0);
 			
 			switch(selection) {
@@ -145,7 +145,7 @@ class GameManager {
             }
         }
         showAllRegisterdMatches();
-        System.out.print("\nAre the above results correct (y/n): ");
+        System.out.print("\nAre the results above correct (y/n): ");
         selection = in.next().charAt(0);
         switch(selection) {
             case 'y': 
