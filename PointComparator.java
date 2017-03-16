@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Comparator;
 
 class PointComparator implements Comparator<Player> {
 	
