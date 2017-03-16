@@ -46,9 +46,9 @@ class GameManager {
         System.out.print("How many tabels: ");
         amtTables = in.nextInt();
         playersPerTable = amtTables;
-        System.out.print("Min players for board game: ");
+        System.out.print("Minimum players for board game: ");
         minPlayers = in.nextInt();
-        System.out.print("Max players for board game: ");
+        System.out.print("Maximum players for board game: ");
         maxPlayers = in.nextInt();
         pointDistrubution();
         
@@ -83,12 +83,12 @@ class GameManager {
         char selection = '0';
         
 	    while (true) {
-	        System.out.println("\n\n\t\t***Menu***\n");
+	        System.out.println("\n\n\t\t***Points - Menu***\n");
 	        System.out.println("Current round: #" + roundNumber);
 			System.out.println("1. Show matches for current round");
 			System.out.println("2. Register result for a match");
 			System.out.println("3. Print results for all registerd matches");
-            System.out.println("4. Print all eliminated players");
+            System.out.println("4. Print score board");
 			System.out.println("5. Next round -->");
 			System.out.println("q. Exit");
 			
@@ -126,7 +126,7 @@ class GameManager {
     void pointDistrubution() {
         Scanner in = new Scanner(System.in);
         points = new int[playersPerTable];
-        System.out.println("Setting points: ");
+        System.out.println("Set points - " + playersPerTable + " players per table: ");
         for(int i = 0; i < points.length; i++) {
             System.out.print("How many points for #" + (i + 1) + ": ");
             points[i] = in.nextInt();
