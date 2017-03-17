@@ -1,0 +1,10 @@
+CYB
+Rounds played: 2
+Amount of players: 4
+Amount of tables: 2
+
+Score board: 
+1. A: 4p
+1. C: 3p
+1. B: 3p
+1. D: 2p

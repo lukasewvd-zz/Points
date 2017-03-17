@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -89,10 +90,11 @@ class GameManager {
 			System.out.println("2. Register result for a match");
 			System.out.println("3. Print results for all registerd matches");
             System.out.println("4. Print score board");
-			System.out.println("5. Next round -->");
+            System.out.println("5. Save reults to log.txt");
+			System.out.println("6. Next round -->");
 			System.out.println("q. Exit");
-			
-	        System.out.print("\nChoose a number between 1-5: ");
+	
+	        System.out.print("\nChoose a number between 1-6: ");
 	        selection = in.next().charAt(0);
 			
 			switch(selection) {
@@ -100,9 +102,10 @@ class GameManager {
 				case '2': clearScreen(); showMatchesforCurrentRound(); registerPlacement(); clearScreen(); break;
 				case '3': clearScreen(); showAllRegisterdMatches(); break;
 				case '4': clearScreen(); printScoreBoard(); break;
-                case '5': clearScreen(); nextRound(); break;
+                case '5': clearScreen(); writeToFile(); break;
+                case '6': clearScreen(); nextRound(); break;
 				case 'q': System.out.println("\nClosing..."); System.exit(0);
-				default: System.out.println("\nUse a number between 1-5!\n");				
+				default: System.out.println("\nUse a number between 1-6!\n");				
 					
 		 	}
 		}
@@ -121,6 +124,38 @@ class GameManager {
         catch (FileNotFoundException ex) {
             System.out.println("Could not find the file!");
         }
+    }
+    
+    void writeToFile() {
+        Scanner in = new Scanner(System.in);
+        String title;
+        int place = 1;
+        
+        if(roundNumber == 1) {
+            System.out.println("ERROR: Scores have not been set yet, wait till next round");
+            return;
+        }
+        try{
+            PrintWriter writer = new PrintWriter("log.txt", "UTF-8");
+            System.out.print("Name of the tournament: ");
+            title = in.nextLine();
+            writer.println(title);
+            writer.println("Rounds played: " + (roundNumber - 1));
+            writer.println("Amount of players: " + amtPlayers);
+            writer.println("Amount of tables: " + amtTables);
+            
+            writer.println("\nScore board: ");
+            Collections.sort(players, new PointComparator());
+    		for (Player player : players) {
+    			writer.println(place + ". " + player.name + ": " + player.points +"p");
+    		}
+            
+            System.out.println("INFO: Data written to 'log.txt'");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("ERROR: Writing to file");
+        }
+        
     }
     
     void pointDistrubution() {
