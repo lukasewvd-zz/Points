@@ -148,6 +148,7 @@ class GameManager {
             Collections.sort(players, new PointComparator());
     		for (Player player : players) {
     			writer.println(place + ". " + player.name + ": " + player.points +"p");
+                place++;
     		}
             
             System.out.println("INFO: Data written to 'log.txt'");
@@ -252,10 +253,12 @@ class GameManager {
     }
     
     void printScoreBoard() {
+        int place = 1;
         System.out.println("Score Board: ");
         Collections.sort(players, new PointComparator());
 		for (Player player : players) {
-			System.out.println(player.name + ": " + player.points +"p");
+			System.out.println(place + ". " + player.name + ": " + player.points +"p");
+            place++;
 		}
     }
     
